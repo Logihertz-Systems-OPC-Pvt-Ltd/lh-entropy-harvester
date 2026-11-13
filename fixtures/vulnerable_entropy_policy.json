@@ -1,0 +1,23 @@
+{
+  "policy_name": "vulnerable_legacy_trng_policy",
+  "min_entropy_bits_per_byte": 2.1,
+  "noise_source_count": 1,
+  "cryptographic_conditioner": "NONE",
+  "compression_ratio": 1.0,
+  "rct_enabled": false,
+  "apt_enabled": false,
+  "halt_feed_on_health_fault": false,
+  "startup_conditioning_samples": 128,
+  "entropy_credit_derating_factor": 1.00,
+  "credit_full_raw_bitcount": true,
+  "mlockall_enabled": false,
+  "zeroize_buffers_after_feed": false,
+  "adc_rail_saturation_guard": false,
+  "max_serial_autocorrelation": 0.45,
+  "drop_privileges_cap_sys_admin_only": false,
+  "seccomp_syscall_filter": false,
+  "write_wakeup_threshold_bits": 64,
+  "max_reseed_interval_sec": 300,
+  "conditioner_startup_kat_verified": false,
+  "log_health_test_failures": false
+}

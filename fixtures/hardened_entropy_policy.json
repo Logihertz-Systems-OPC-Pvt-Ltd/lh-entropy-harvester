@@ -1,0 +1,23 @@
+{
+  "policy_name": "hardened_hsm_trng_policy",
+  "min_entropy_bits_per_byte": 6.5,
+  "noise_source_count": 3,
+  "cryptographic_conditioner": "SHA-256",
+  "compression_ratio": 2.5,
+  "rct_enabled": true,
+  "apt_enabled": true,
+  "halt_feed_on_health_fault": true,
+  "startup_conditioning_samples": 2048,
+  "entropy_credit_derating_factor": 0.50,
+  "credit_full_raw_bitcount": false,
+  "mlockall_enabled": true,
+  "zeroize_buffers_after_feed": true,
+  "adc_rail_saturation_guard": true,
+  "max_serial_autocorrelation": 0.08,
+  "drop_privileges_cap_sys_admin_only": true,
+  "seccomp_syscall_filter": true,
+  "write_wakeup_threshold_bits": 256,
+  "max_reseed_interval_sec": 30,
+  "conditioner_startup_kat_verified": true,
+  "log_health_test_failures": true
+}

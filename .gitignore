@@ -1,0 +1,17 @@
+# Build directories and outputs
+bin/
+build/
+tests/test_runner
+dist/
+
+# Object files and libraries
+*.o
+*.a
+*.so
+
+# Binary dumps and archives
+*.bin
+*.tar.gz
+*.swp
+*~
+.DS_Store

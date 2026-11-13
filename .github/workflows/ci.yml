@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    name: Build & Test (${{ matrix.compiler }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        compiler: [ gcc, clang ]
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Install Compiler Toolchain
+        run: |
+          sudo apt-get update
+          if [ "${{ matrix.compiler }}" = "clang" ]; then
+            sudo apt-get install -y clang llvm
+          else
+            sudo apt-get install -y gcc
+          fi
+
+      - name: Build CLI & Run Verification Suite
+        run: |
+          make CC=${{ matrix.compiler }} clean all test
+
+      - name: CLI Smoke Tests
+        run: |
+          ./bin/lh-entropy --version
+          ./bin/lh-entropy --help
+          ./bin/lh-entropy scan fixtures/hardened_entropy_policy.json --format table
+          ./bin/lh-entropy scan fixtures/hardened_entropy_policy.json --format json
+          ./bin/lh-entropy scan fixtures/hardened_entropy_policy.json --format sarif
+          ./bin/lh-entropy analyze-noise fixtures/sample_sram_adc_noise.json --format table
+          ./bin/lh-entropy condition fixtures/sample_sram_adc_noise.json --format json
+          ./bin/lh-entropy health-test --mode pass
