@@ -1,0 +1,9 @@
+Package: lh-entropy-harvester
+Version: 0.1.0
+Section: utils
+Priority: optional
+Architecture: amd64
+Maintainer: Sameer Tawade <ops@logihertz.com>
+Homepage: https://www.logihertz.com
+Description: lh-entropy - NIST SP 800-90B Markov Min-Entropy Lower Bound
+ C11 hardware entropy daemon harvesting SRAM startup PUF and ADC thermal jitter, enforcing NIST SP 800-90B continuous health tests (RCT/APT), MCV min-entropy estimation, and vetted SHA-256 conditioning for /dev/random.
